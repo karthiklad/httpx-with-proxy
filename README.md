@@ -1,12 +1,12 @@
-# Using Proxies with HTTPX
+# Proxies mit HTTPX verwenden
 
-[![Promo](https://github.com/luminati-io/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.com/proxy-types/residential-proxies) 
+[![Promo](https://github.com/luminati-io/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
 
-This guide explains how to use proxies with HTTPX, with examples for unauthenticated, authenticated, rotating, and fallback proxies.
+Dieser Leitfaden erklärt, wie Sie Proxies mit HTTPX verwenden, mit Beispielen für nicht authentifizierte, authentifizierte, rotierende und Fallback-Proxies.
 
-## Using Unauthenticated Proxies
+## Nicht authentifizierte Proxies verwenden
 
-With an unauthenticated proxy, we’re not using a username or password, and all requests go to a `proxy_url`. Below is a code snippet that uses an unauthenticated proxy:
+Bei einem nicht authentifizierten Proxy verwenden wir keinen Benutzernamen oder kein Passwort, und alle Anfragen gehen an eine `proxy_url`. Unten finden Sie ein Code-Snippet, das einen nicht authentifizierten Proxy verwendet:
 
 ```python
 import httpx
@@ -19,11 +19,11 @@ with httpx.Client(proxy=proxy_url) as client:
     print(ip_info.text)
 ```
 
-## Using Authenticated Proxies
+## Authentifizierte Proxies verwenden
 
-Authenticated proxies require a username and password. Once you submit correct credentials, you are granted connection to the proxy.
+Authentifizierte Proxies erfordern einen Benutzernamen und ein Passwort. Sobald Sie korrekte Zugangsdaten übermitteln, erhalten Sie Zugriff auf die Verbindung zum Proxy.
 
-With authentication, the `proxy_url` looks like this: `http://<username>:<password>@<proxy_url>:<port_number>`. The following example demonstrates how to construct the user portion of the authentication string using both `zone` and `username`. It also utilizes [Bright Data's datacenter proxies](https://brightdata.com/proxy-types/datacenter-proxies) as the base connection.
+Mit Authentifizierung sieht die `proxy_url` so aus: `http://<username>:<password>@<proxy_url>:<port_number>`. Das folgende Beispiel zeigt, wie Sie den Benutzerteil der Authentifizierungszeichenfolge mithilfe von `zone` und `username` konstruieren. Außerdem werden [Bright Data's datacenter proxies](https://brightdata.de/proxy-types/datacenter-proxies) als Basisverbindung verwendet.
 
 ```python
 import httpx
@@ -39,22 +39,22 @@ ip_info = httpx.get("https://geo.brdtest.com/mygeo.json", proxy=proxy_url)
 print(ip_info.text)
 ```
 
-Here is the breakdown of the above code:
+Hier ist die Aufschlüsselung des obigen Codes:
 
-- We start with creating config variables: `username`, `zone`, and `password`.
-- We use those to create our `proxy_url`: `"http://brd-customer-{username}-zone-{zone}:{password}@brd.superproxy.io:33335"`.
-- We send a request to the API to retrieve general information about our proxy connection.
+- Wir beginnen mit dem Erstellen von Konfigurationsvariablen: `username`, `zone` und `password`.
+- Wir verwenden diese, um unsere `proxy_url` zu erstellen: `"http://brd-customer-{username}-zone-{zone}:{password}@brd.superproxy.io:33335"`.
+- Wir senden eine Anfrage an die API, um allgemeine Informationen über unsere Proxy-Verbindung abzurufen.
 
-The response should look like this.
+Die Antwort sollte so aussehen.
 
 ```json
 {"country":"US","asn":{"asnum":20473,"org_name":"AS-VULTR"},"geo":{"city":"","region":"","region_name":"","postal_code":"","latitude":37.751,"longitude":-97.822,"tz":"America/Chicago"}}
 
 ```
 
-## Using Rotating Proxies
+## Rotierende Proxies verwenden
 
-Rotating proxies means creating a list of proxies and choosing from them randomly. The code snippet below creates a list of `countries`, then uses `random.choice()` on each request to pick a random country from the list. Our `proxy_url` gets formatted to fit the country. The list of [rotating proxies](https://brightdata.com/solutions/rotating-proxies) in the code is from Bright Data.
+Rotierende Proxies bedeuten, eine Liste von Proxies zu erstellen und zufällig daraus auszuwählen. Das folgende Code-Snippet erstellt eine Liste von `countries` und verwendet dann bei jeder Anfrage `random.choice()`, um ein zufälliges Land aus der Liste auszuwählen. Unsere `proxy_url` wird entsprechend formatiert, um zum Land zu passen. Die Liste der [rotating proxies](https://brightdata.de/solutions/rotating-proxies) im Code stammt von Bright Data.
 
 ```python
 import httpx
@@ -79,16 +79,16 @@ for random_proxy in countries:
     print(ip_info.text)
 ```
 
-The code is very similar to the one for authenticated proxies. The key differences are:
+Der Code ist dem für authentifizierte Proxies sehr ähnlich. Die wichtigsten Unterschiede sind:
 
-- We create an array of countries: `["us", "gb", "au", "ca"]`.
-- We make multiple requsts instead of a single one. For each request, we use `random.choice(countries)` to choose a random country every time we create the `proxy_url`.
+- Wir erstellen ein Array von Ländern: `["us", "gb", "au", "ca"]`.
+- Wir führen mehrere Anfragen statt nur einer aus. Für jede Anfrage verwenden wir `random.choice(countries)`, um bei jeder Erstellung der `proxy_url` jedes Mal ein zufälliges Land auszuwählen.
 
-## Creating a Fallback Proxy Connection
+## Eine Fallback-Proxy-Verbindung erstellen
 
-All examples above use datacenter and free proxies. The former often get blocked by websites, the latter isn't very reliable. For all this to work, there should be a fallback to residential proxies.
+Alle obigen Beispiele verwenden Rechenzentrums- und freie Proxies. Erstere werden von Websites oft blockiert, letztere sind nicht sehr zuverlässig. Damit das alles funktioniert, sollte es einen Fallback auf Residential Proxies geben.
 
-To do that, let's create a function called `safe_get()`. When we call it, we first try to get the url using a datacenter connection. When this fails, we _fall back_ to our residential connection.
+Erstellen wir dazu eine Funktion namens `safe_get()`. Wenn wir sie aufrufen, versuchen wir zuerst, die URL über eine Rechenzentrumsverbindung abzurufen. Wenn dies fehlschlägt, _fallen wir zurück_ auf unsere Residential-Verbindung.
 
 ```python
 import httpx
@@ -138,15 +138,15 @@ async def main():
 asyncio.run(main())
 ```
 
-Here is the code breakdown:
+Hier ist die Aufschlüsselung des Codes:
 
-- We now have two sets of configuration variables: one for our datacenter connection and another for our residential connection.
-- This time, we use an `AsyncClient()` session to introduce some of the more advanced functionality of HTTPX.
-- First, we attempt to make our request with the `datacenter_proxy`.
-- If we fail to get a proper response, we retry the request using the `residential_proxy`. Also note the `verify` flag in the code. When using Bright Data's residential proxies, you need to download and use the [SSL certificate](https://docs.brightdata.com/general/account/ssl-certificate).
-- Once we’ve got a solid response, we write the page to an HTML file. We can open this page up in a browser and see what the proxy actually accessed and sent back to us.
+- Wir haben nun zwei Sätze von Konfigurationsvariablen: einen für unsere Rechenzentrumsverbindung und einen weiteren für unsere Residential-Verbindung.
+- Dieses Mal verwenden wir eine `AsyncClient()`-Sitzung, um einige der fortgeschritteneren Funktionen von HTTPX einzuführen.
+- Zuerst versuchen wir, unsere Anfrage mit dem `datacenter_proxy` zu stellen.
+- Wenn es uns nicht gelingt, eine geeignete Antwort zu erhalten, wiederholen wir die Anfrage mit dem `residential_proxy`. Beachten Sie auch das `verify`-Flag im Code. Bei der Verwendung von Bright Data's Residential Proxies müssen Sie das [SSL certificate](https://docs.brightdata.com/general/account/ssl-certificate) herunterladen und verwenden.
+- Sobald wir eine solide Antwort erhalten haben, schreiben wir die Seite in eine HTML-Datei. Wir können diese Seite in einem Browser öffnen und sehen, worauf der Proxy tatsächlich zugegriffen hat und was an uns zurückgesendet wurde.
 
-After running the code above your output and resulting HTML file should look like this.
+Nach dem Ausführen des obigen Codes sollten Ihre Ausgabe und die resultierende HTML-Datei so aussehen.
 
 ```
 trying with datacenter
@@ -157,6 +157,6 @@ response successful
 
 ![Screenshot of the Amazon homepage](https://github.com/luminati-io/httpx-with-proxy/blob/main/Images/image.png)
 
-## Conclusion
+## Fazit
 
-When you combine HTTPX with [Bright Data's top-tier proxy services](https://brightdata.com/proxy-types), you get a private, efficient, and reliable way to scrape the web. Start your free trial with Bright Data’s proxies today!
+Wenn Sie HTTPX mit [Bright Data's top-tier proxy services](https://brightdata.de/proxy-types) kombinieren, erhalten Sie eine private, effiziente und zuverlässige Möglichkeit, das Web zu Scraping. Starten Sie noch heute Ihre kostenlose Testversion mit den Proxies von Bright Data!
