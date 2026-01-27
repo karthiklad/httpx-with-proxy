@@ -1,6 +1,6 @@
 # Proxies mit HTTPX verwenden
 
-[![Promo](https://github.com/luminati-io/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
+[![Promo](https://github.com/bright-data-de/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
 
 Dieser Leitfaden erklärt, wie Sie Proxies mit HTTPX verwenden, mit Beispielen für nicht authentifizierte, authentifizierte, rotierende und Fallback-Proxies.
 
@@ -155,7 +155,7 @@ trying with residential
 response successful
 ```
 
-![Screenshot of the Amazon homepage](https://github.com/luminati-io/httpx-with-proxy/blob/main/Images/image.png)
+![Screenshot of the Amazon homepage](https://github.com/bright-data-de/httpx-with-proxy/blob/main/Images/image.png)
 
 ## Fazit
 
